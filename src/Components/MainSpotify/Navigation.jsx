@@ -8,15 +8,21 @@ import { Link } from 'react-router-dom'
 import '../../main-page.css'
 
 var height = {
-    height: "85%"
+    height: "85%",
+    searchQuery: undefined
 }
 
 class Navigation extends React.Component{
     state = {
-        searchQuery: ''
+        searchArtist: ''
     }
     search = (ev) => {
-        console.log(ev.target.value)
+        let search = ev.target.value
+        if(search.length > 2) {
+            this.setState({
+                searchArtist: search
+            })
+        }
     }
     render() {
         return (
@@ -28,7 +34,7 @@ class Navigation extends React.Component{
                         <FontAwesomeIcon icon={faHome} style={{fontSize: "25px"}} /> 
                     </NavIcon>
                         <NavText>
-                        <Link to="/home">
+                        <Link to="/">
                             Home
                         </Link>
                         </NavText>
@@ -38,8 +44,10 @@ class Navigation extends React.Component{
                         <FontAwesomeIcon icon={faSearch} style={{fontSize: "25px"}} /> 
                     </NavIcon>
                     <NavText>
-                        {this.state.searchQuery.length > 2 && <Link to="/s=:searchQuery"> </Link>}
-                        <Input onChange={this.search} type="text" placeholder="search for song or artist" />
+                        {/* {this.state.searchArtist.length > 2 ? <Link to={"/s=" + this.state.searchArtist}><Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />
+                        </Link> : <Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />} */}
+                        <Link to={"/s=" + this.state.searchArtist}><Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />
+                        </Link> 
                     </NavText>
                 </NavItem>
                 <NavItem eventKey="library">

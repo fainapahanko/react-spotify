@@ -6,13 +6,13 @@ import { GuardSpinner } from "react-spinners-kit";
 
 var artists = ["Radiohead", "Moderat", "Massive Attack"]
 
-class HomePage extends React.Component{
+class HomePage extends React
+.Component{
     state = { 
         loading: true,
         tracks: ""
     }
     render() {
-        console.log(this.state.tracks)
         return (
             <>
             <div className="home-container">
@@ -40,11 +40,11 @@ class HomePage extends React.Component{
         })
         artists.forEach(async(artist) => {
             let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist + "&limit=5", {
+                method: "GET",
                 headers: {
                     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
                     "x-rapidapi-key": "27579eb660msh15a2248514f7b35p1ae83djsnf94b95f7dc4d"
-                },
-                method: "GET"
+                }
             })
             let musicInfo = await response.json()
             this.setState({

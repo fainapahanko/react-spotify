@@ -10,8 +10,7 @@ class SongPage extends React.Component{
         loading: true,
     }
     render() {
-        console.log("state",this.state.albumInfo)
-
+        console.log(this.props.match.params.songId)
         return (
             <div className="song-container">
                     {this.state.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><GuardSpinner  className="spinner-spotify" size={60} /></div> :                     <Row className="page-row">
@@ -54,12 +53,11 @@ class SongPage extends React.Component{
                 method: "GET"
             })
             let infoAlbum = await response.json()
-            let date = infoAlbum.release_date.split("-")
-            console.log("infoAlbum",infoAlbum.tracks.data.length)
+            let mainDate = infoAlbum.release_date.split("-")
             this.setState({
                 cover: infoAlbum.cover_medium,
                 title: infoAlbum.title,
-                date: date[0],
+                date: mainDate[0],
                 songs: infoAlbum.tracks.data.length,
                 artist: infoAlbum.artist.name,
                 albumInfo: infoAlbum.tracks,

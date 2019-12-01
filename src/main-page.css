@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:900&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -54,6 +55,12 @@ a{
   width: auto;
   min-height: 100vh;
   padding: 80px 160px;
+}
+.artist-container{
+  background: rgb(14, 14, 14);
+  margin-left: 55px;
+  width: auto;
+  min-height: 100vh;
 }
 .card-single {
   width: 180px;
@@ -133,4 +140,38 @@ a{
 }
 .track-col{
   margin-left: 30px;
+}
+.artist-name{
+  font-family: 'Roboto', sans-serif;
+  font-size: 60px;
+  padding-top: 160px;
+}
+.btn-play{
+  width: 120px;
+  background-color: #00C24B !important;
+  border-radius: 100px !important;
+  border:none !important;
+  font-family: 'Montserrat', sans-serif !important;
+  margin-right: 60px !important;
+}
+.btn-follow{
+  width: 120px;
+  background-color:rgba(255,255,255,0) !important;
+  border-radius: 100px !important;
+  border:1px solid white !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.albums-card {
+  background: rgba(255,255,255,0) !important;
+  border: none !important;
+}
+.albums-title{
+  color: rgba(255,255,255,0.7) !important;
+  font-size: 12px;
+}
+.artist-albums{
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  color:white;
+  margin-bottom: 30px;
 }

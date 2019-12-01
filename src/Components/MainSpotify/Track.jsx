@@ -3,6 +3,7 @@ import {Col, Row} from 'reactstrap'
 import '../../main-page.css'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withRouter } from 'react-router-dom'
 
 class Track extends React.Component{
     state = {}
@@ -29,4 +30,4 @@ class Track extends React.Component{
     }
 }
 
-export default Track
+export default withRouter(Track)
