@@ -16,11 +16,10 @@ class ArtistPage extends React.Component {
             textAlign: "center",
             color: "white",
             height: "300px",
-            background: "linear-gradient(rgba(0,130,170,0),rgb(14, 14, 14))," + `url(${this.state.cover})` + "no-repeat center", 
+            background: "linear-gradient(to bottom, rgba(0,130,170,0), rgb(14, 14, 14) 100%)," + `url(${this.state.cover})` + "no-repeat center", 
             backgroundSize: "cover",
         }
-        let artist = this.state.artist
-        let albums = this.state.albums
+
         console.log(this.state.cover)
         console.log(this.state.artist)
         console.log(this.state.albums)
