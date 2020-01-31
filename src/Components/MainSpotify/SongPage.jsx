@@ -13,7 +13,8 @@ class SongPage extends React.Component{
         console.log(this.props.match.params.songId)
         return (
             <div className="song-container">
-                    {this.state.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :                     <Row className="page-row">
+                    {this.state.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :
+                     <Row className="page-row">
                     <Col className="col-3 page-col">
                     <Card className="my-3 card-page">
                         <CardImg top src={this.state.cover} alt="Card image cap" />
@@ -63,7 +64,6 @@ class SongPage extends React.Component{
                 albumInfo: infoAlbum.tracks,
                 loading: false
             })
-
         }catch(error){
             console.log('Error', error);
         };

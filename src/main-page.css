@@ -62,6 +62,21 @@ a{
   width: auto;
   min-height: 100vh;
 }
+.phantom-player{
+  display: block;
+  padding: 20px;
+  height: 15%;
+}
+.footer-player-box{
+  background-color: #252526;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 15%;
+  width: 100vw
+}
 .card-single {
   width: 180px;
   height: 250px;
@@ -175,3 +190,4 @@ a{
   color:white;
   margin-bottom: 30px;
 }
+/*check it later */

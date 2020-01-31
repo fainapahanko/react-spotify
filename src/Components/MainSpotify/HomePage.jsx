@@ -11,7 +11,6 @@ const mapStateToProps = state => state
 
 class HomePage extends React.Component{
     state = { 
-        loading: true,
         searchedMusic: undefined,
         tracks: ""
     }

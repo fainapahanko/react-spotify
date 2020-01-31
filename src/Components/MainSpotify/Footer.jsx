@@ -1,41 +1,30 @@
 import React from "react";
 import "../../main-page.css";
-var style = {
-  backgroundColor: "#252526",
-  textAlign: "center",
-  padding: "20px",
-  position: "fixed",
-  left: "0",
-  bottom: "0",
-  height: "15%",
-  width: "100vw"
-};
+import { connect } from "react-redux";
 
-var phantom = {
-  display: "block",
-  padding: "20px",
-  height: "15%"
-};
+const mapStateToProps = state => state
 
 class Footer extends React.Component {
-    state ={ 
-
-    } 
     render (){
+      console.log(this.props)
         return (
-            <div style={phantom}>
-              <div style={style}>
-                  <audio
-                    className="col"
-                    ref="audio_tag"
-                    src={this.props.currentSong}
-                    controls
-                    volume="0.5"
-                  />
+            <div className="phantom-player">
+              <div className="footer-player-box">
+                {this.props.selectedSong && <h2 style={{fontSize: "24px", color:"white"}}>{this.props.selectedSong.title}</h2>}
+                {this.props.selectedSong ? 
+                                  <audio
+                                  src={this.props.selectedSong.preview && this.props.selectedSong.preview}
+                                  controls
+                                  volume="0.5"
+                                /> : 
+                                <audio
+                                controls
+                                volume="0.5"
+                              />}
               </div>
             </div>
           );
     }
 };
 
-export default Footer;
+export default connect(mapStateToProps)(Footer);
