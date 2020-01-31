@@ -1,8 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from 'redux-thunk'
 import rootReducer from "../reducers/index";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
     searchArtist: "",
@@ -13,8 +12,8 @@ const initialState = {
 
 export default function configureStore() {
     return createStore(
-      rootReducer,
-      initialState,
-      composeEnhancers(applyMiddleware(thunk))
+        rootReducer, 
+        initialState,
+        composeWithDevTools(applyMiddleware(thunk))
     );
-  }
+}
