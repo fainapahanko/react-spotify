@@ -2,9 +2,14 @@ export default function (state = {}, action) {
     switch(action.type) {
         case "SEARCH_ARTIST": 
             return {
+                ...state,
                 searchArtist: action.payload
             };
-        
+        case "SELECT_SONG":
+            return {
+                ...state,
+                selectedSong: action.payload
+            };
         case "LOAD_SPINNER": 
             return {
                 ...state,
@@ -16,7 +21,7 @@ export default function (state = {}, action) {
                 ...state,
                 loading: false
             };
-            default:
+        default:
             return state
         }
     }

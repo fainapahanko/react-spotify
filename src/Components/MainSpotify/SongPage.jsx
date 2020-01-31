@@ -75,6 +75,7 @@ class SongPage extends React.Component{
                 albumInfo: infoAlbum.tracks,
                 // loading: false
             })
+
             this.props.unloadspinner();
         }catch(error){
             console.log('Error', error);

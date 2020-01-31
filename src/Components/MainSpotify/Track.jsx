@@ -4,6 +4,17 @@ import '../../main-page.css'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
+
+const mapStateToProps = state => state
+
+const mapDispatchToProps = dispatch => ({
+    selectSong: song => 
+        dispatch({
+            type: "SELECT_SONG",
+            payload: song
+        })
+})
 
 class Track extends React.Component{
     state = {}
@@ -13,7 +24,7 @@ class Track extends React.Component{
         let duration = time2.toFixed(2)
         return(
             <Col md="12" className="track-col">
-                <Row>
+                <Row onClick={() => this.props.selectSong(this.props.trackInfo)}>
                     <Col md="1" className="col-track pl-4">
                         <FontAwesomeIcon icon={faMusic} style={{fontSize: "15px", color: "rgba(255,255,255,0.5"}}/>
                     </Col>
@@ -30,4 +41,4 @@ class Track extends React.Component{
     }
 }
 
-export default withRouter(Track)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Track))
