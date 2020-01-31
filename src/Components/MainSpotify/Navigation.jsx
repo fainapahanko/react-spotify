@@ -6,24 +6,29 @@ import { faHome, faSearch, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import {Button, Input} from 'reactstrap'
 import { Link } from 'react-router-dom'
 import '../../main-page.css'
+import { connect } from 'react-redux';
 
-var height = {
+const height = {
     height: "85%",
     searchQuery: undefined
 }
 
+const mapStateToProps = state => state
+const mapDispatchToProps = dispatch => ({
+    searchArtist: (search) => dispatch(searchOnChange(search))
+})
+
+const searchOnChange = (e) => {
+    return(dispatch) => {
+        let searchResult = e.target.value
+        dispatch({
+            type: "SEARCH_ARTIST",
+            payload: searchResult
+        })
+    }
+}
+
 class Navigation extends React.Component{
-    state = {
-        searchArtist: ''
-    }
-    search = (ev) => {
-        let search = ev.target.value
-        if(search.length > 2) {
-            this.setState({
-                searchArtist: search
-            })
-        }
-    }
     render() {
         return (
         <SideNav style={height} className="sidenavigation">
@@ -46,8 +51,14 @@ class Navigation extends React.Component{
                     <NavText>
                         {/* {this.state.searchArtist.length > 2 ? <Link to={"/s=" + this.state.searchArtist}><Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />
                         </Link> : <Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />} */}
-                        <Link to={"/s=" + this.state.searchArtist}><Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />
-                        </Link> 
+                        {/* <Link to={"/s=" + this.state.searchArtist}> */}
+                            <Input 
+                                style={{background:"black",width:"150px"}} 
+                                onChange={this.props.searchArtist} 
+                                type="text" 
+                                placeholder="search for song or artist" 
+                            />
+                        {/* </Link>  */}
                     </NavText>
                 </NavItem>
                 <NavItem eventKey="library">
@@ -77,5 +88,5 @@ class Navigation extends React.Component{
         )
     }
 }
-
-export default Navigation
+// export default Navigation
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
