@@ -7,7 +7,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const initialState = {
     searchArtist: "",
     selectedSong: undefined,
-    loading: true
+    loading: true,
+    like:[]
 }
 
 export default function configureStore() {
