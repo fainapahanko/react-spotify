@@ -4,6 +4,7 @@ import Navigation from './Navigation'
 import HomePage from './HomePage'
 import Footer from './Footer'
 import SongPage from './SongPage'
+import Library from "./Library"
 import SearchPage from './SearchPage'
 import ArtistPage from './ArtistPage'
 
@@ -24,6 +25,7 @@ class MainComponent extends React.Component {
                 <Route path="/details-song:songId" component={SongPage} />
                 <Route path="/details-artist:artistId" component={ArtistPage} />
                 <Route path="/s=:searchQuery" component={SearchPage} />
+                <Route path="/library" component={Library} />
                 {/* <div className="home-container"></div> */}
                 <Footer currentSong={this.state.currentSong} />
             </Router>

@@ -66,7 +66,9 @@ class Navigation extends React.Component{
                         <FontAwesomeIcon icon={faBookmark} style={{fontSize: "25px"}} /> 
                     </NavIcon>
                     <NavText>
-                        Library
+                        <Link to="/library">
+                            Library
+                        </Link>
                     </NavText>
                 </NavItem>
                     <NavItem eventKey="sign-in">

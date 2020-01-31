@@ -46,11 +46,11 @@ class Track extends React.Component{
         let duration = time2.toFixed(2)
         return(
             <Col md="12" className="track-col">
-                <Row onClick={() => this.props.selectSong(this.props.trackInfo)}>
+                <Row>
                     <Col md="1" className="col-track pl-4">
                         <FontAwesomeIcon icon={faMusic} style={{fontSize: "15px", color: "rgba(255,255,255,0.5)"}}/>
                     </Col>
-                    <Col md="9" className="col-track col-track-8">
+                    <Col md="9" className="col-track col-track-8" onClick={() => this.props.selectSong(this.props.trackInfo)}>
                         <h2 className="track-title">{this.props.trackInfo.title}</h2>
                         <h2 className="track-artisr">{this.props.trackInfo.artist.name}</h2>
                     </Col>
