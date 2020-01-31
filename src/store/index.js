@@ -6,7 +6,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
     searchArtist: "",
-    selectedSong: undefined
+    selectedSong: undefined,
     loading: true
 }
 
