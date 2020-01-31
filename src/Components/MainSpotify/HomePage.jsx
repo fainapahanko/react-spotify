@@ -1,15 +1,23 @@
 import React from 'react'
-import {Row} from 'reactstrap'
+import {Row, Spinner} from 'reactstrap'
 import MusicList from './MusicList'
 import '../../main-page.css'
 import { MetroSpinner } from "react-spinners-kit";
+import {connect} from 'react-redux';
 
 var artists = ["Radiohead", "Moderat", "Massive Attack"]
 
-class HomePage extends React
-.Component{
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+    loadspinner: () => dispatch({ type: "LOAD_SPINNER"}),
+    unloadspinner: () => dispatch({type: "UNLOAD_SPINNER"})
+
+}); 
+
+class HomePage extends React.Component{
     state = { 
-        loading: true,
+        // loading: true,
         tracks: ""
     }
     render() {
@@ -17,7 +25,7 @@ class HomePage extends React
             <>
             <div className="home-container">
                 <Row>
-                {this.state.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>}
+                {this.props.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>}
                 {this.state.tracks && this.state.tracks
                     .map((track, index) => <MusicList changeCurrentSong={this.props.changeCurrentSong} tracks={track} key={index} />)
                 }
@@ -35,9 +43,13 @@ class HomePage extends React
     }
 
     fetchingMusic = async() => {
-        this.setState({
-            loading:true,
-        })
+        // this.setState({
+        //     loading:true,
+        // })
+        this.props.loadspinner()
+        setTimeout(() =>{
+            this.props.unloadspinner();
+            }, 3000)
         artists.forEach(async(artist) => {
             let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist + "&limit=5", {
                 method: "GET",
@@ -52,10 +64,11 @@ class HomePage extends React
                     tracks: musicInfo.data,
                     title: artist
                 }],
-                loading: false
-            })
+                // loading: false
+            });
+           
         })
     }
 }
 
-export default HomePage
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

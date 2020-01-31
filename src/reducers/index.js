@@ -4,8 +4,22 @@ export default function (state = {}, action) {
             return {
                 ...state,
                 searchArtist: action.payload
-            }
-        default:
+            };
+        
+        case "LOAD_SPINNER": 
+            return {
+                ...state,
+                loading: true
+            };
+            
+        case "UNLOAD_SPINNER": 
+            return {
+                ...state,
+                loading: false
+            };
+            default:
             return state
+        }
     }
-}
+        
+    

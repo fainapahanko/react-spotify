@@ -5,7 +5,9 @@ import rootReducer from "../reducers";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
-    searchArtist: ""
+    searchArtist: "",
+    loading: true
+    
 }
 
 export default function configureStore() {
