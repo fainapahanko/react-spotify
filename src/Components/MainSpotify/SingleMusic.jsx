@@ -8,7 +8,7 @@ class SingleMusic extends React.Component{
         return (
             <Col className="col-2 card-col">
                 <Card className="my-3 card-single">
-                <CardImg top width="180px" src={this.props.tracks.album.cover_medium} alt="Card image cap" />
+                <CardImg top width="180px" onClick={() => this.props.changeCurrentSong(this.props.tracks.preview)} src={this.props.tracks.album.cover_medium} alt="Card image cap" />
                     <CardBody>
                         <Link to={"/details-song"+ this.props.tracks.album.id} >
                             <CardTitle className="text-truncate card-title-single">{this.props.tracks.title}</CardTitle>

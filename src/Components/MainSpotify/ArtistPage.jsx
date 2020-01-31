@@ -1,5 +1,5 @@
 import React from 'react'
-import { GuardSpinner } from "react-spinners-kit";
+import { MetroSpinner } from "react-spinners-kit";
 import {Button, Row} from 'reactstrap'
 import '../../main-page.css'
 import ListOfAlbums from './ListOfAlbums'
@@ -20,12 +20,9 @@ class ArtistPage extends React.Component {
             backgroundSize: "cover",
         }
 
-        console.log(this.state.cover)
-        console.log(this.state.artist)
-        console.log(this.state.albums)
         return(
             <div className="artist-container">
-                {this.state.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><GuardSpinner  className="spinner-spotify" size={60} /></div>} 
+                {this.state.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>} 
                 {this.state.artist && <div style={style}>
                     <h3 className="artist-name">{this.state.artist.name}</h3>
                     <Button className="btn-play">Play</Button>

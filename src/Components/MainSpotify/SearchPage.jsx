@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchList from './SearchList'
 import {Row} from 'reactstrap'
-import { GuardSpinner } from "react-spinners-kit";
+import { MetroSpinner } from "react-spinners-kit";
 
 class SearchPage extends React.Component{
     state = {
@@ -12,7 +12,7 @@ class SearchPage extends React.Component{
         return(
             <div className="home-container">
                 <Row>
-                    {this.state.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><GuardSpinner  className="spinner-spotify" size={60} /></div> : this.state.music.map((m,i) => <SearchList key={i} song={m}/>)}
+                    {this.state.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> : this.state.music.map((m,i) => <SearchList key={i} song={m}/>)}
                 </Row>
             </div>
         )

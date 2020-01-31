@@ -2,7 +2,7 @@ import React from 'react'
 import {Row} from 'reactstrap'
 import MusicList from './MusicList'
 import '../../main-page.css'
-import { GuardSpinner } from "react-spinners-kit";
+import { MetroSpinner } from "react-spinners-kit";
 
 var artists = ["Radiohead", "Moderat", "Massive Attack"]
 
@@ -17,9 +17,9 @@ class HomePage extends React
             <>
             <div className="home-container">
                 <Row>
-                {this.state.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><GuardSpinner  className="spinner-spotify" size={60} /></div>}
+                {this.state.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>}
                 {this.state.tracks && this.state.tracks
-                    .map((track, index) => <MusicList tracks={track} key={index} />)
+                    .map((track, index) => <MusicList changeCurrentSong={this.props.changeCurrentSong} tracks={track} key={index} />)
                 }
                 </Row>
             </div>

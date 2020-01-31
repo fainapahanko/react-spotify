@@ -1,31 +1,41 @@
-import React from 'react'
-import '../../main-page.css'
+import React from "react";
+import "../../main-page.css";
 var style = {
-    backgroundColor: "#252526",
-    textAlign: "center",
-    padding: "20px",
-    position: "fixed",
-    left: "0",
-    bottom: "0",
-    height: "15%",
-    width: "100vw",
-}
+  backgroundColor: "#252526",
+  textAlign: "center",
+  padding: "20px",
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  height: "15%",
+  width: "100vw"
+};
 
 var phantom = {
-  display: 'block',
-  padding: '20px',
-  height: '15%',
-}
+  display: "block",
+  padding: "20px",
+  height: "15%"
+};
 
-const Footer = () => {
-    return(
-        <div>
-            <div style={phantom} />
-                <div style={style}>
-                    <h3>The best player ever still in process </h3>
-                </div>
-        </div>
-    )
-}
+class Footer extends React.Component {
+    state ={ 
 
-export default Footer
+    } 
+    render (){
+        return (
+            <div style={phantom}>
+              <div style={style}>
+                  <audio
+                    className="col"
+                    ref="audio_tag"
+                    src={this.props.currentSong}
+                    controls
+                    volume="0.5"
+                  />
+              </div>
+            </div>
+          );
+    }
+};
+
+export default Footer;

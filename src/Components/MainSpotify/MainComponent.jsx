@@ -7,18 +7,28 @@ import SongPage from './SongPage'
 import SearchPage from './SearchPage'
 import ArtistPage from './ArtistPage'
 
-const MainComponent = () => {
-    return (
-        <Router>
-            <Navigation />
-            <Route path="/" exact component={HomePage} />
-            <Route path="/details-song:songId" component={SongPage} />
-            <Route path="/details-artist:artistId" component={ArtistPage} />
-            <Route path="/s=:searchQuery" component={SearchPage} />
-            <div className="home-container"></div>
-            <Footer />
-        </Router>
-    )
+class MainComponent extends React.Component {
+    state = {
+        currentSong: ""
+    }
+    changeCurrentSong = song => {
+        this.setState({
+            currentSong: song
+        })
+    }
+    render(){
+        return (
+            <Router>
+                <Navigation />
+                <Route path="/" exact component={() => <HomePage changeCurrentSong={this.changeCurrentSong}/>} />
+                <Route path="/details-song:songId" component={SongPage} />
+                <Route path="/details-artist:artistId" component={ArtistPage} />
+                <Route path="/s=:searchQuery" component={SearchPage} />
+                {/* <div className="home-container"></div> */}
+                <Footer currentSong={this.state.currentSong} />
+            </Router>
+        )
+    }
 }
 
 export default MainComponent
