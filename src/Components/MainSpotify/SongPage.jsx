@@ -3,17 +3,26 @@ import '../../main-page.css'
 import {Row,Col,Card,Button, CardImg, CardSubtitle, CardTitle, CardBody} from 'reactstrap'
 import Track from './Track'
 import { MetroSpinner } from "react-spinners-kit";
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+    loadspinner: () => dispatch({ type: "LOAD_SPINNER"}),
+    unloadspinner: () => dispatch({type: "UNLOAD_SPINNER"})
+
+}); 
 
 class SongPage extends React.Component{
     state = {
         albumInfo: '',
-        loading: true,
+        // loading: true,
     }
     render() {
         console.log(this.props.match.params.songId)
         return (
             <div className="song-container">
-                    {this.state.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :                     <Row className="page-row">
+                    {this.props.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :                     <Row className="page-row">
                     <Col className="col-3 page-col">
                     <Card className="my-3 card-page">
                         <CardImg top src={this.state.cover} alt="Card image cap" />
@@ -36,14 +45,17 @@ class SongPage extends React.Component{
         )
     }
     componentDidMount = async() => {
+        this.props.loadspinner();
         setTimeout(async() => {
             await this.fetchAlbum()
+            this.props.unloadspinner()
         }, 500);
     }
     fetchAlbum = async() => {
-        this.setState({
-            loading: true
-        })
+        // this.setState({
+        //     loading: true
+        // })
+        this.props.loadspinner();
         try{
             let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + this.props.match.params.songId,{
                 headers: {
@@ -61,13 +73,13 @@ class SongPage extends React.Component{
                 songs: infoAlbum.tracks.data.length,
                 artist: infoAlbum.artist.name,
                 albumInfo: infoAlbum.tracks,
-                loading: false
+                // loading: false
             })
-
+            this.props.unloadspinner();
         }catch(error){
             console.log('Error', error);
         };
     }
 }
 
-export default SongPage
+export default connect(mapStateToProps, mapDispatchToProps)(SongPage)
