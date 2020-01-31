@@ -3,7 +3,6 @@ import {Col, Card, CardImg, CardBody, CardTitle} from 'reactstrap'
 import '../../main-page.css'
 
 const ListOfAlbums = (props) => {
-    console.log(props)
     return(
         <Col md="2">
             <Card className="albums-card">

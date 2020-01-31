@@ -34,10 +34,8 @@ class Track extends React.Component{
         })
         if (this.state.like){
             this.props.removeLike(this.props.trackInfo);
-            console.log(this.props)
         } else {
             this.props.addLike(this.props.trackInfo);
-            console.log(this.props)
         }
     }
     render(){

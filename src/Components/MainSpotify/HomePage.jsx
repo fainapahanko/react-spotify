@@ -21,7 +21,6 @@ class HomePage extends React.Component{
         tracks: ""
     }
     render() {
-        console.log(this.props)
         return (
             <>
             <div className="home-container">
@@ -29,7 +28,7 @@ class HomePage extends React.Component{
 
                 {this.props.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>}
                 {this.props.searchArtist.length > 3 ? this.state.searchedMusic.map((m,i) => <SearchList song={m} key={i}/>) : this.state.tracks && this.state.tracks
-                    .map((track, index) => <MusicList changeCurrentSong={this.props.changeCurrentSong} tracks={track} key={index} />)}
+                    .map((track, index) => <MusicList tracks={track} key={index} />)}
                 </Row>
             </div>
             </>
@@ -68,9 +67,6 @@ class HomePage extends React.Component{
     }
 
     fetchingMusic = async() => {
-        // this.setState({
-        //     loading:true,
-        // })
         this.props.loadspinner()
         setTimeout(() =>{
             this.props.unloadspinner();
@@ -89,7 +85,6 @@ class HomePage extends React.Component{
                     tracks: musicInfo.data,
                     title: artist
                 }],
-                // loading: false
             });
            
         })
