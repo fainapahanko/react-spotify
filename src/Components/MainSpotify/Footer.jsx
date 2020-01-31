@@ -6,7 +6,6 @@ const mapStateToProps = state => state
 
 class Footer extends React.Component {
     render (){
-      console.log(this.props)
         return (
             <div className="phantom-player">
               <div className="footer-player-box">

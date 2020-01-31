@@ -49,16 +49,12 @@ class Navigation extends React.Component{
                         <FontAwesomeIcon icon={faSearch} style={{fontSize: "25px"}} /> 
                     </NavIcon>
                     <NavText>
-                        {/* {this.state.searchArtist.length > 2 ? <Link to={"/s=" + this.state.searchArtist}><Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />
-                        </Link> : <Input style={{background:"black",width:"150px"}} onChange={this.search} type="text" placeholder="search for song or artist" />} */}
-                        {/* <Link to={"/s=" + this.state.searchArtist}> */}
                             <Input 
                                 style={{background:"black",width:"150px"}} 
                                 onChange={this.props.searchArtist} 
                                 type="text" 
                                 placeholder="search for song or artist" 
                             />
-                        {/* </Link>  */}
                     </NavText>
                 </NavItem>
                 <NavItem eventKey="library">
@@ -66,7 +62,9 @@ class Navigation extends React.Component{
                         <FontAwesomeIcon icon={faBookmark} style={{fontSize: "25px"}} /> 
                     </NavIcon>
                     <NavText>
-                        Library
+                        <Link to="/library">
+                            Library
+                        </Link>
                     </NavText>
                 </NavItem>
                     <NavItem eventKey="sign-in">
@@ -88,5 +86,5 @@ class Navigation extends React.Component{
         )
     }
 }
-// export default Navigation
+
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation)

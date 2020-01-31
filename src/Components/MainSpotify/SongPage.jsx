@@ -16,10 +16,8 @@ const mapDispatchToProps = dispatch => ({
 class SongPage extends React.Component{
     state = {
         albumInfo: '',
-        // loading: true,
     }
     render() {
-        console.log(this.props.match.params.songId)
         return (
             <div className="song-container">
                     {this.props.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :                     <Row className="page-row">
@@ -52,9 +50,6 @@ class SongPage extends React.Component{
         }, 500);
     }
     fetchAlbum = async() => {
-        // this.setState({
-        //     loading: true
-        // })
         this.props.loadspinner();
         try{
             let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + this.props.match.params.songId,{
@@ -73,7 +68,6 @@ class SongPage extends React.Component{
                 songs: infoAlbum.tracks.data.length,
                 artist: infoAlbum.artist.name,
                 albumInfo: infoAlbum.tracks,
-                // loading: false
             })
 
             this.props.unloadspinner();

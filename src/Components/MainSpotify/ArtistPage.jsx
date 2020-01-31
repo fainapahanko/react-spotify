@@ -18,7 +18,6 @@ class ArtistPage extends React.Component {
         cover: '',
         artist: '',
         albums: '',
-        // loading: true
     }
     render(){
         var style = {
@@ -57,9 +56,6 @@ class ArtistPage extends React.Component {
     }
 
     fetchingArtist = async() => {
-        // this.setState({
-        //     loading: true
-        // })
         this.props.loadspinner()
         setTimeout(() =>{
             this.props.unloadspinner();
@@ -77,15 +73,11 @@ class ArtistPage extends React.Component {
         this.setState({
             cover: artistInfo.picture_xl,
             artist: artistInfo,
-            // loading: false
         })
         
     }
 
     fetchingAlbums = async() => {
-        // this.setState({
-        //     loading: true
-        // })
         this.props.loadspinner();
         let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/artist/" + this.props.match.params.artistId + "/albums/", {
             method: "GET",
@@ -97,7 +89,6 @@ class ArtistPage extends React.Component {
         let albumsInfo = await response.json()
         this.setState({
             albums: albumsInfo.data,
-            // loading: false
         })
         this.props.unloadspinner();
     }
