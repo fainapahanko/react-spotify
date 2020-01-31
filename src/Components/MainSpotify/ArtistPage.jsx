@@ -3,13 +3,22 @@ import { MetroSpinner } from "react-spinners-kit";
 import {Button, Row} from 'reactstrap'
 import '../../main-page.css'
 import ListOfAlbums from './ListOfAlbums'
+import {connect} from 'react-redux';
 
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+    loadspinner: () => dispatch({ type: "LOAD_SPINNER"}),
+    unloadspinner: () => dispatch({type: "UNLOAD_SPINNER"})
+
+}); 
+ 
 class ArtistPage extends React.Component {
     state = {
         cover: '',
         artist: '',
         albums: '',
-        loading: true
+        // loading: true
     }
     render(){
         var style = {
@@ -22,14 +31,14 @@ class ArtistPage extends React.Component {
 
         return(
             <div className="artist-container">
-                {this.state.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>} 
+                {this.props.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>} 
                 {this.state.artist && <div style={style}>
                     <h3 className="artist-name">{this.state.artist.name}</h3>
                     <Button className="btn-play">Play</Button>
                     <Button className="btn-follow">Folow</Button>
                                         </div>}
                 <div style={{padding: "50px 40px"}}> 
-                {!this.state.loading &&                   <h4 className="artist-albums">Albums</h4>}
+                {!this.props.loading &&                   <h4 className="artist-albums">Albums</h4>}
                     <Row>
                     {this.state.albums && 
                     this.state.albums.map((m,i) => <ListOfAlbums album={m} key={i} />)}
@@ -39,16 +48,23 @@ class ArtistPage extends React.Component {
         )
     }
     componentDidMount = async() => {
+        this.props.loadspinner();
         setTimeout(async()=>{
             this.fetchingArtist()
             this.fetchingAlbums()
+            this.props.unloadspinner()
         }, 2000)
     }
 
     fetchingArtist = async() => {
-        this.setState({
-            loading: true
-        })
+        // this.setState({
+        //     loading: true
+        // })
+        this.props.loadspinner()
+        setTimeout(() =>{
+            this.props.unloadspinner();
+            }, 3000)
+
         let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/artist/" + this.props.match.params.artistId, {
             method: "GET",
             headers: {
@@ -61,14 +77,16 @@ class ArtistPage extends React.Component {
         this.setState({
             cover: artistInfo.picture_xl,
             artist: artistInfo,
-            loading: false
+            // loading: false
         })
+        
     }
 
     fetchingAlbums = async() => {
-        this.setState({
-            loading: true
-        })
+        // this.setState({
+        //     loading: true
+        // })
+        this.props.loadspinner();
         let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/artist/" + this.props.match.params.artistId + "/albums/", {
             method: "GET",
             headers: {
@@ -79,9 +97,10 @@ class ArtistPage extends React.Component {
         let albumsInfo = await response.json()
         this.setState({
             albums: albumsInfo.data,
-            loading: false
+            // loading: false
         })
+        this.props.unloadspinner();
     }
 }
 
-export default ArtistPage
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage)

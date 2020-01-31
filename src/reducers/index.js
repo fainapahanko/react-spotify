@@ -9,8 +9,21 @@ export default function (state = {}, action) {
             return {
                 ...state,
                 selectedSong: action.payload
-            }
+            };
+        case "LOAD_SPINNER": 
+            return {
+                ...state,
+                loading: true
+            };
+            
+        case "UNLOAD_SPINNER": 
+            return {
+                ...state,
+                loading: false
+            };
         default:
             return state
+        }
     }
-}
+        
+    
