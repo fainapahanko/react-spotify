@@ -8,11 +8,6 @@ import { Link } from 'react-router-dom'
 import '../../main-page.css'
 import { connect } from 'react-redux';
 
-const height = {
-    height: "85%",
-    searchQuery: undefined
-}
-
 const mapStateToProps = state => state
 const mapDispatchToProps = dispatch => ({
     searchArtist: (search) => dispatch(searchOnChange(search))
@@ -31,12 +26,12 @@ const searchOnChange = (e) => {
 class Navigation extends React.Component{
     render() {
         return (
-        <SideNav style={height} className="sidenavigation">
+        <SideNav className="sidenavigation">
         <SideNav.Toggle />
             <SideNav.Nav defaultSelected="home">
                 <NavItem eventKey="home">
                     <NavIcon>
-                        <FontAwesomeIcon icon={faHome} style={{fontSize: "25px"}} /> 
+                        <FontAwesomeIcon icon={faHome} /> 
                     </NavIcon>
                         <NavText>
                         <Link to="/">
@@ -46,20 +41,22 @@ class Navigation extends React.Component{
                 </NavItem>
                 <NavItem eventKey="search">
                     <NavIcon>
-                        <FontAwesomeIcon icon={faSearch} style={{fontSize: "25px"}} /> 
+                        <FontAwesomeIcon icon={faSearch} /> 
                     </NavIcon>
                     <NavText>
+                        <Link to="search-page" >
                             <Input 
                                 style={{background:"black",width:"150px"}} 
                                 onChange={this.props.searchArtist} 
                                 type="text" 
                                 placeholder="search for song or artist" 
                             />
+                        </Link>
                     </NavText>
                 </NavItem>
                 <NavItem eventKey="library">
                     <NavIcon>
-                        <FontAwesomeIcon icon={faBookmark} style={{fontSize: "25px"}} /> 
+                        <FontAwesomeIcon icon={faBookmark} /> 
                     </NavIcon>
                     <NavText>
                         <Link to="/library">

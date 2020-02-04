@@ -45,17 +45,17 @@ class Track extends React.Component{
         return(
             <Col md="12" className="track-col">
                 <Row>
-                    <Col md="1" className="col-track pl-4">
+                    <Col className="col-1 pl-4">
                         <FontAwesomeIcon icon={faMusic} style={{fontSize: "15px", color: "rgba(255,255,255,0.5)"}}/>
                     </Col>
-                    <Col md="9" className="col-track col-track-8" onClick={() => this.props.selectSong(this.props.trackInfo)}>
+                    <Col className="col-6" onClick={() => this.props.selectSong(this.props.trackInfo)}>
                         <h2 className="track-title">{this.props.trackInfo.title}</h2>
                         <h2 className="track-artisr">{this.props.trackInfo.artist.name}</h2>
                     </Col>
-                    <Col md="1" className="col-track">
+                    <Col className="col-1">
                         <h2 className="track-title">{duration}s</h2>
                     </Col>
-                    <Col md="1">
+                    <Col className="col-1">
                         {this.state.like === false ? 
                         <FontAwesomeIcon icon={faThumbsUp} style={{fontSize: "15px"}} onClick={this.handleLike}>
                         </FontAwesomeIcon> : 

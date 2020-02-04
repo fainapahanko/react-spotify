@@ -20,8 +20,9 @@ class SongPage extends React.Component{
     render() {
         return (
             <div className="song-container">
-                    {this.props.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :                     <Row className="page-row">
-                    <Col className="col-3 page-col">
+                    {this.props.loading ? <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div> :
+                    <Row className="page-row">
+                    <Col className="col-12 col-md-3">
                     <Card className="my-3 card-page">
                         <CardImg top src={this.state.cover} alt="Card image cap" />
                         <CardBody className="card-body-page">
@@ -32,7 +33,7 @@ class SongPage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col md="9">
+                    <Col className="col-12 col-md-9">
                         <Row className="track-col">
                         {this.state.albumInfo && this.state.albumInfo.data
                             .map((el,index)=> <Track trackInfo={el} key={index} />)}

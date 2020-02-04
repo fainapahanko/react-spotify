@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom'
 class SearchList extends React.Component {
     render(){
         return(
-            <Col className="col-2 card-col">
+            <Col className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2  card-col">
                 <Card className="my-3 card-single">
-                    <CardImg top width="180px" src={this.props.song.album.cover_medium} alt="Card image cap" />
+                    <CardImg top src={this.props.song.album.cover_medium} alt="Card image cap" />
                         <CardBody>
                             <Link to={"/details-song"+ this.props.song.album.id} >
                                 <CardTitle className="text-truncate card-title-single">{this.props.song.title}</CardTitle>

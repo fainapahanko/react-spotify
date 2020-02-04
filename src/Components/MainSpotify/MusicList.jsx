@@ -14,7 +14,7 @@ class MusicList extends React.Component {
                     <Row>
                     {this.props.tracks.tracks
                         .map((m,index) => 
-                        <SingleMusic changeCurrentSong={this.props.changeCurrentSong} tracks={m} key={index}
+                        <SingleMusic tracks={m} key={index}
                         />
                     )}
                     </Row>

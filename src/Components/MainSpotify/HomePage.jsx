@@ -17,7 +17,6 @@ const mapDispatchToProps = dispatch => ({
 
 class HomePage extends React.Component{
     state = { 
-        searchedMusic: undefined,
         tracks: ""
     }
     render() {
@@ -27,7 +26,7 @@ class HomePage extends React.Component{
                 <Row>
 
                 {this.props.loading && <div style = {{position: "fixed", top: "40%", left: "50%", transform: "translate(-50%, -50%)"}}><MetroSpinner  className="spinner-spotify" size={60} /></div>}
-                {this.props.searchArtist.length > 3 ? this.state.searchedMusic.map((m,i) => <SearchList song={m} key={i}/>) : this.state.tracks && this.state.tracks
+                {this.state.tracks && this.state.tracks
                     .map((track, index) => <MusicList tracks={track} key={index} />)}
                 </Row>
             </div>
@@ -35,11 +34,6 @@ class HomePage extends React.Component{
         )
     }
 
-    componentDidUpdate = async(prevProps, prevState)  => {
-        if(prevProps.searchArtist !== this.props.searchArtist) {
-            await this.fetchWithSearch(this.props.searchArtist)
-        }
-    }
 
     fetchWithSearch = async(search) => {
         this.setState({ 
