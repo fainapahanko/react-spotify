@@ -140,6 +140,18 @@ a{
   text-align: center;
 }
 
+.play-icon-div{
+  text-align: end;
+}
+.fa-play-circle{
+  color: rgba(1,1,1,0)
+}
+.fa-play-circle:hover {
+  color: rgb(70, 218, 93);
+  padding-bottom: 5px;
+  font-size: 30px !important;
+}
+
 .main-navbar{
   background: linear-gradient(90deg, #1C3C64, #060D16 100%);
 }

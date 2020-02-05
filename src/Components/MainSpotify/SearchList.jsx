@@ -1,7 +1,19 @@
 import React from 'react'
 import {Card, CardImg, Col, CardSubtitle, CardTitle, CardBody} from 'reactstrap'
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../../main-page.css'
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => state
+
+const mapDispatchToProps = dispatch => ({
+    selectSong: song => dispatch({
+        type:"SELECT_SONG",
+        payload: song 
+    })
+})
 
 class SearchList extends React.Component {
     render(){
@@ -16,6 +28,10 @@ class SearchList extends React.Component {
                             <Link to={"/details-artist" + this.props.song.artist.id} >
                             <CardSubtitle className="card-subtitle-single">{this.props.song.artist.name}</CardSubtitle>
                             </Link>
+                            <div className='play-icon-div' onClick={() => this.props.selectSong(this.props.song)}>
+                                <FontAwesomeIcon 
+                                icon={faPlayCircle}  />
+                            </div>
                     </CardBody>
                 </Card>
             </Col>
@@ -23,4 +39,4 @@ class SearchList extends React.Component {
     }
 }
 
-export default SearchList
+export default connect(mapStateToProps, mapDispatchToProps)(SearchList)

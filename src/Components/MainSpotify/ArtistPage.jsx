@@ -10,7 +10,6 @@ const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
     loadspinner: () => dispatch({ type: "LOAD_SPINNER"}),
     unloadspinner: () => dispatch({type: "UNLOAD_SPINNER"})
-
 }); 
  
 class ArtistPage extends React.Component {
@@ -69,7 +68,6 @@ class ArtistPage extends React.Component {
             }
         })
         let artistInfo = await response.json()
-        console.log(artistInfo)
         this.setState({
             cover: artistInfo.picture_xl,
             artist: artistInfo,

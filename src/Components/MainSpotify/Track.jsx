@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from 'reactstrap'
 import '../../main-page.css'
-import { faMusic, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { faMusic, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'

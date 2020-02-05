@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
     searchArtist: "",
-    selectedSong: undefined,
+    selectedSong: null,
     loading: true,
     like:[]
 }
